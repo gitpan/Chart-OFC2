@@ -1,0 +1,59 @@
+This file contains message digests of all files listed in MANIFEST,
+signed via the Module::Signature module, version 0.55.
+
+To verify the content in this distribution, first make sure you have
+Module::Signature installed, then type:
+
+    % cpansign -v
+
+It will check each file's integrity, as well as the signature's
+validity.  If "==> Signature verified OK! <==" is not displayed,
+the distribution may already have been compromised, and you should
+not run its Makefile.PL or Build.PL.
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+SHA1 31e4849dbe28aa2fac32aab967702f18217b1f1d Build.PL
+SHA1 6826399108e650f32e583849237d9b886acdae31 Changes
+SHA1 a89fe8166fcb0e3c4a28e1af6b5c9fa2e8e249a5 MANIFEST
+SHA1 9dd34091eac5044578a826bee0c2aa8e93993da2 META.yml
+SHA1 5a151b90bfaf8ee5a3dc8a3f00e2f7d3cc129144 Makefile.PL
+SHA1 ae82075e635623f40139bf3ab28eac72b9a1fc3c README
+SHA1 67f5df4c4b814ea5dcf094b7d6bd22ac4ef5ea70 lib/Chart/OFC2.pm
+SHA1 956e1a37f482394cc6a77c521f8d9714588952d3 lib/Chart/OFC2/Axis.pm
+SHA1 0238ee7bc92d7bb90daa234afb1f12f076b2d7e5 lib/Chart/OFC2/Bar.pm
+SHA1 15c30e29b259c60daf6c84686bfd361a59226a90 lib/Chart/OFC2/BarLineBase.pm
+SHA1 17f407cc08becfc23be46e00e82966c121e3133f lib/Chart/OFC2/Element.pm
+SHA1 048dc7a96c37315fcb9e4e3414802c1d9205000c lib/Chart/OFC2/Extremes.pm
+SHA1 a9c50375ebd0ead66e6ef8862c08ae7ccd63635c lib/Chart/OFC2/Labels.pm
+SHA1 5c72a76dcf6bad596e3433b827db18e274731b07 lib/Chart/OFC2/Line.pm
+SHA1 c8da05cc5054190f0db76dd4b3f5ae900104a368 lib/Chart/OFC2/Pie.pm
+SHA1 2f8ad40e9a334d4ac73078cf783abd687419e899 lib/Chart/OFC2/Scatter.pm
+SHA1 1aa11ce6acef53aaa2566bae8bda4264588160f2 lib/Chart/OFC2/Title.pm
+SHA1 43214bd066fc972874fbbbf33ae7dae2711dabcb lib/Chart/OFC2/geany_run_script.sh
+SHA1 605f05a5336cc37a476bb10b218f5ad1a2bd340d t/00_compile.t
+SHA1 2a0ccd8ba371c7579ba312bdc3abaf3ef676fb13 t/01_chart.t
+SHA1 113551c1d23eefbe4cff84e2d675c9e4a4ca5920 t/02_bar.t
+SHA1 86ac8dbca3b733ff46de93ea645657ee508a36c1 t/03_pie.t
+SHA1 84a52395d2342625540fa490c9d92b7bd4aff7cb t/04_axis.t
+SHA1 93ed70ef0ce33aee0bcfd3963d63ba4f3bc2132e t/05_extremes.t
+SHA1 1d2d092904bb686e4364bd984ddcf40b5d96cf8b t/06_element.t
+SHA1 41533fbd463e42d2ecf1e119eca910c16809d13e t/distribution.t
+SHA1 0b5d04da8a8d1e9a7361b44b1e38402347ef1824 t/output/expressInstall.swf
+SHA1 d79a1997b83be4bac1f0eafeb1d8d156ba347bd0 t/output/open-flash-chart.swf
+SHA1 66851ab2133e27b97c4f3048416b947aa7ed82c5 t/output/swfobject.js
+SHA1 a2e21cf1e971f44e9c285b9a44e0c2e1e448e2a7 t/perlcritic.t
+SHA1 5c1ccfc0f00f07be726af763c46497ddcbbdff30 t/perlcriticrc
+SHA1 5aa1ab0c95f16a7e29e92898ee97e9dccf15a9b7 t/perltidy.conf
+SHA1 0b1c5a2d59be6bfa7d60c64cd964fea6a0331705 t/pod-coverage.t
+SHA1 5627d89c30c0d892477a44b6554fabc779e949ef t/pod-spell.t
+SHA1 640935336dc1123c0069bcf5432bcaedc2cf22d3 t/pod.t
+SHA1 4aeb184c9bed26ab6c3be1ebdb8470c0cb353b1f t/signature.t
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.9 (GNU/Linux)
+
+iEYEARECAAYFAkkoTyQACgkQC0OgUPgL2SdsggCgpt/Elc1Rnyv3BdahAhpwNSyU
+f7kAn00qUlXZGKOZoA01Sr9GtjMj4Hy3
+=N1qo
+-----END PGP SIGNATURE-----
