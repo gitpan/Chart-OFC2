@@ -1,6 +1,6 @@
 ---
 name: Chart-OFC2
-version: 0.01
+version: 0.02
 author:
   - 'Jozef Kutej <jkutej@cpan.org>'
 abstract: Generate html and data files for use with Open Flash Chart version 2
@@ -21,7 +21,7 @@ build_requires:
 provides:
   Chart::OFC2:
     file: lib/Chart/OFC2.pm
-    version: 0.01
+    version: 0.02
   Chart::OFC2::Axis:
     file: lib/Chart/OFC2/Axis.pm
     version: 0.01

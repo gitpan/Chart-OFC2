@@ -15,12 +15,12 @@ not run its Makefile.PL or Build.PL.
 Hash: SHA1
 
 SHA1 31e4849dbe28aa2fac32aab967702f18217b1f1d Build.PL
-SHA1 6826399108e650f32e583849237d9b886acdae31 Changes
-SHA1 a89fe8166fcb0e3c4a28e1af6b5c9fa2e8e249a5 MANIFEST
-SHA1 9dd34091eac5044578a826bee0c2aa8e93993da2 META.yml
+SHA1 b51fc6a208e73136626f116a01f9129ae3947fc3 Changes
+SHA1 5ccb8a6c683bc5837a58e03b4c223dac9724ec9c MANIFEST
+SHA1 9a9107a74434811567bbf7f2cfe51a371c8c0248 META.yml
 SHA1 5a151b90bfaf8ee5a3dc8a3f00e2f7d3cc129144 Makefile.PL
 SHA1 ae82075e635623f40139bf3ab28eac72b9a1fc3c README
-SHA1 67f5df4c4b814ea5dcf094b7d6bd22ac4ef5ea70 lib/Chart/OFC2.pm
+SHA1 45807e4d42bdc72cc40a630271b0aed2556c1fc2 lib/Chart/OFC2.pm
 SHA1 956e1a37f482394cc6a77c521f8d9714588952d3 lib/Chart/OFC2/Axis.pm
 SHA1 0238ee7bc92d7bb90daa234afb1f12f076b2d7e5 lib/Chart/OFC2/Bar.pm
 SHA1 15c30e29b259c60daf6c84686bfd361a59226a90 lib/Chart/OFC2/BarLineBase.pm
@@ -40,6 +40,8 @@ SHA1 84a52395d2342625540fa490c9d92b7bd4aff7cb t/04_axis.t
 SHA1 93ed70ef0ce33aee0bcfd3963d63ba4f3bc2132e t/05_extremes.t
 SHA1 1d2d092904bb686e4364bd984ddcf40b5d96cf8b t/06_element.t
 SHA1 41533fbd463e42d2ecf1e119eca910c16809d13e t/distribution.t
+SHA1 7bdb1e034041cbf3313dc597518e44660d3c2392 t/output/_footer.html
+SHA1 e0855927a1ab51b785a4de405df0b67a4c8f4766 t/output/_header.html
 SHA1 0b5d04da8a8d1e9a7361b44b1e38402347ef1824 t/output/expressInstall.swf
 SHA1 d79a1997b83be4bac1f0eafeb1d8d156ba347bd0 t/output/open-flash-chart.swf
 SHA1 66851ab2133e27b97c4f3048416b947aa7ed82c5 t/output/swfobject.js
@@ -53,7 +55,7 @@ SHA1 4aeb184c9bed26ab6c3be1ebdb8470c0cb353b1f t/signature.t
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1.4.9 (GNU/Linux)
 
-iEYEARECAAYFAkkoTyQACgkQC0OgUPgL2SdsggCgpt/Elc1Rnyv3BdahAhpwNSyU
-f7kAn00qUlXZGKOZoA01Sr9GtjMj4Hy3
-=N1qo
+iEYEARECAAYFAkkqasoACgkQC0OgUPgL2Se/NgCfSf1i0F9lIwvkEtKO1oR8n75f
+iEMAn2JmrMtr+sgC7e5F0ahNLEg3j+CE
+=m+Ly
 -----END PGP SIGNATURE-----
