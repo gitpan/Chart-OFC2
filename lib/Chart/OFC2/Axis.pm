@@ -22,6 +22,7 @@ use Moose::Util::TypeConstraints;
 
 our $VERSION = '0.01';
 
+use Chart::OFC2;
 use Chart::OFC2::Labels;
 
 
@@ -34,17 +35,17 @@ use Chart::OFC2::Labels;
         => as 'Object'
         => where { $_[0]->isa('Chart::OFC2::XAxis') };
 
-    has 'name'   => ( is => 'rw', isa => enum(['x_axis', 'y_axis', 'y_axis_right']), required => 1 );
-    has 'labels' => ( is => 'rw', isa => 'Chart-OFC2-Labels', coerce  => 1);
-    has 'stroke' => ( is => 'rw', isa => 'Int', );
-    has 'color' => ( is => 'rw', isa => 'Str',  );
-    has 'offset' => ( is => 'rw', isa => 'Bool', );
-    has 'grid_color' => ( is => 'rw', isa => 'Str', );
-    has '3d' => ( is => 'rw', isa => 'Bool', );
-    has 'steps' => ( is => 'rw', isa => 'Int', );
-    has 'visible' => ( is => 'rw', isa => 'Bool',  );
-    has 'min' => ( is => 'rw', isa => 'Num|Str|Undef', );   # can be 'a' for auto too
-    has 'max' => ( is => 'rw', isa => 'Num|Str|Undef', );   # can be 'a' for auto too
+    has 'name'        => ( is => 'rw', isa => enum(['x_axis', 'y_axis', 'y_axis_right']), required => 1 );
+    has 'labels'      => ( is => 'rw', isa => 'Chart-OFC2-Labels', coerce  => 1);
+    has 'stroke'      => ( is => 'rw', isa => 'Int', );
+    has 'colour'      => ( is => 'rw', isa => 'Str',  );
+    has 'offset'      => ( is => 'rw', isa => 'Bool', );
+    has 'grid_colour' => ( is => 'rw', isa => 'Str', );
+    has '3d'          => ( is => 'rw', isa => 'Bool', );
+    has 'steps'       => ( is => 'rw', isa => 'Int', );
+    has 'visible'     => ( is => 'rw', isa => 'Bool',  );
+    has 'min'         => ( is => 'rw', isa => 'Num|Str|Undef', );   # can be 'a' for auto too
+    has 'max'         => ( is => 'rw', isa => 'Num|Str|Undef', );   # can be 'a' for auto too
 
 =cut
 
@@ -55,17 +56,24 @@ subtype 'Chart-OFC2-XAxis'
     => as 'Object'
     => where { $_[0]->isa('Chart::OFC2::XAxis') };
 
-has 'name'   => ( is => 'rw', isa => enum(['x_axis', 'y_axis', 'y_axis_right']), required => 1 );
-has 'labels' => ( is => 'rw', isa => 'Chart-OFC2-Labels', coerce  => 1);
-has 'stroke' => ( is => 'rw', isa => 'Int', );
-has 'color' => ( is => 'rw', isa => 'Str',  );
-has 'offset' => ( is => 'rw', isa => 'Bool', );
-has 'grid_color' => ( is => 'rw', isa => 'Str', );
-has '3d' => ( is => 'rw', isa => 'Bool', );
-has 'steps' => ( is => 'rw', isa => 'Int', );
-has 'visible' => ( is => 'rw', isa => 'Bool',  );
-has 'min' => ( is => 'rw', isa => 'Num|Str|Undef', );   # can be 'a' for auto too
-has 'max' => ( is => 'rw', isa => 'Num|Str|Undef', );   # can be 'a' for auto too
+coerce 'Chart-OFC2-XAxis'
+    => from 'HashRef'
+    => via { Chart::OFC2::XAxis->new($_) };
+coerce 'Chart-OFC2-YAxis'
+    => from 'HashRef'
+    => via { Chart::OFC2::YAxis->new($_) };
+
+has 'name'        => ( is => 'rw', isa => enum(['x_axis', 'y_axis', 'y_axis_right']), required => 1 );
+has 'labels'      => ( is => 'rw', isa => 'Chart-OFC2-Labels', coerce  => 1);
+has 'stroke'      => ( is => 'rw', isa => 'Int', );
+has 'colour'      => ( is => 'rw', isa => 'Str',  );
+has 'offset'      => ( is => 'rw', isa => 'Bool', );
+has 'grid_colour' => ( is => 'rw', isa => 'Str', );
+has '3d'          => ( is => 'rw', isa => 'Bool', );
+has 'steps'       => ( is => 'rw', isa => 'Chart-OFC2-NaturalInt', );
+has 'visible'     => ( is => 'rw', isa => 'Bool',  );
+has 'min'         => ( is => 'rw', isa => 'Num|Str|Undef', );   # can be 'a' for auto too
+has 'max'         => ( is => 'rw', isa => 'Num|Str|Undef', );   # can be 'a' for auto too
 
 =head1 METHODS
 

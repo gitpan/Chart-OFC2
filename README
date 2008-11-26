@@ -20,9 +20,9 @@ SYNOPSIS
         
     my $chart = Chart::OFC2->new(
             'title'  => 'Bar chart test',
-            'x_axis' => Chart::OFC2::XAxis->new(
+            'x_axis' => {
                 'labels' => [ 'Jan', 'Feb', 'Mar', 'Apr', 'May' ],
-            ),
+            },
         );
         
     my $bar = Chart::OFC2::Bar->new();
@@ -43,10 +43,10 @@ WARNING
 DESCRIPTION
     OFC2 is a flash script for creating graphs. To have a graph we need an
     open-flash-chart.swf and a JSON data file describing graph data.
-    Complete example you can find after successful run of this module tests
-    in t/output/ folder. t/output/index.html is a page containing two (bar
-    and pie) graphs, t/output/bad-data.json and t/output/pie-data.json are
-    the data files.
+    Complete examples you can find after successful run of this module tests
+    in t/output/ folder - t/output/bar.html, t/output/pie.html,
+    t/output/hbar.html are html graphs and t/output/bad-data.json,
+    t/output/pie-data.json, t/output/hbar-data.json are the data files.
 
 PROPERTIES
         has 'data_load_type' => (is => 'rw', isa => 'Str',  default => 'inline_js');
@@ -56,6 +56,7 @@ PROPERTIES
         has 'y_axis'         => (is => 'rw', isa => 'Chart-OFC2-YAxis', default => sub { Chart::OFC2::YAxis->new() }, lazy => 1, );
         has 'elements'       => (is => 'rw', isa => 'ArrayRef', default => sub{[]}, lazy => 1);
         has 'extremes'       => (is => 'rw', isa => 'Chart-OFC2-Extremes',  default => sub { Chart::OFC2::Extremes->new() }, lazy => 1);
+        has 'tooltip'        => (is => 'rw', isa => 'Chart-OFC2-ToolTip',);
 
 METHODS
   new()

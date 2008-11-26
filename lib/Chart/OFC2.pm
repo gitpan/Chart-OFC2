@@ -23,9 +23,9 @@ OFC2 bar chart data:
     
     my $chart = Chart::OFC2->new(
         'title'  => 'Bar chart test',
-        'x_axis' => Chart::OFC2::XAxis->new(
+        'x_axis' => {
             'labels' => [ 'Jan', 'Feb', 'Mar', 'Apr', 'May' ],
-        ),
+        },
     );
     
     my $bar = Chart::OFC2::Bar->new();
@@ -48,10 +48,10 @@ versions.
 
 OFC2 is a flash script for creating graphs. To have a graph we need an
 F<open-flash-chart.swf> and a JSON data file describing graph data.
-Complete example you can find after successful run of this module
-tests in F<t/output/> folder. F<t/output/index.html> is a page
-containing two (bar and pie) graphs, F<t/output/bad-data.json> and
-F<t/output/pie-data.json> are the data files.
+Complete examples you can find after successful run of this module
+tests in F<t/output/> folder - F<t/output/bar.html>, F<t/output/pie.html>,
+F<t/output/hbar.html> are html graphs and F<t/output/bad-data.json>,
+F<t/output/pie-data.json>, F<t/output/hbar-data.json> are the data files.
 
 =cut
 
@@ -59,7 +59,7 @@ F<t/output/pie-data.json> are the data files.
 use Moose;
 use Moose::Util::TypeConstraints;
 
-our $VERSION = '0.02';
+our $VERSION = '0.03_01';
 
 use Carp::Clan 'croak';
 use JSON::XS qw();
@@ -68,6 +68,7 @@ use Chart::OFC2::Axis;
 use Chart::OFC2::Bar;
 use Chart::OFC2::Title;
 use Chart::OFC2::Extremes;
+use Chart::OFC2::ToolTip;
 use List::Util 'min', 'max';
 use List::MoreUtils 'any';
 
@@ -80,17 +81,23 @@ use List::MoreUtils 'any';
     has 'y_axis'         => (is => 'rw', isa => 'Chart-OFC2-YAxis', default => sub { Chart::OFC2::YAxis->new() }, lazy => 1, );
     has 'elements'       => (is => 'rw', isa => 'ArrayRef', default => sub{[]}, lazy => 1);
     has 'extremes'       => (is => 'rw', isa => 'Chart-OFC2-Extremes',  default => sub { Chart::OFC2::Extremes->new() }, lazy => 1);
+    has 'tooltip'        => (is => 'rw', isa => 'Chart-OFC2-ToolTip',);
 
 =cut
+
+subtype 'Chart-OFC2-NaturalInt'
+    => as 'Int'
+    => where { $_ > 0 };
 
 has 'data_load_type' => (is => 'rw', isa => 'Str',  default => 'inline_js');
 has 'bootstrap'      => (is => 'rw', isa => 'Bool', default => '1');
 has 'title'          => (is => 'rw', isa => 'Chart-OFC2-Title', default => sub { Chart::OFC2::Title->new() }, lazy => 1, coerce  => 1);
-has 'x_axis'         => (is => 'rw', isa => 'Chart-OFC2-XAxis', default => sub { Chart::OFC2::XAxis->new() }, lazy => 1,);
-has 'y_axis'         => (is => 'rw', isa => 'Chart-OFC2-YAxis', default => sub { Chart::OFC2::YAxis->new() }, lazy => 1, );
+has 'x_axis'         => (is => 'rw', isa => 'Chart-OFC2-XAxis', default => sub { Chart::OFC2::XAxis->new() }, lazy => 1, coerce  => 1);
+has 'y_axis'         => (is => 'rw', isa => 'Chart-OFC2-YAxis', default => sub { Chart::OFC2::YAxis->new() }, lazy => 1, coerce  => 1);
 has 'elements'       => (is => 'rw', isa => 'ArrayRef', default => sub{[]}, lazy => 1);
 has 'extremes'       => (is => 'rw', isa => 'Chart-OFC2-Extremes',  default => sub { Chart::OFC2::Extremes->new() }, lazy => 1);
 has '_json'          => (is => 'rw', isa => 'Object',  default => sub { JSON::XS->new->pretty(1)->convert_blessed(1) }, lazy => 1);
+has 'tooltip'        => (is => 'rw', isa => 'Chart-OFC2-ToolTip', coerce  => 1);
 
 
 =head1 METHODS
@@ -155,6 +162,7 @@ sub render_chart_data {
         'title'    => $self->title,
         'x_axis'   => $self->x_axis,
         'y_axis'   => $self->y_axis,
+        'tooltip'  => $self->tooltip,
         'elements' => $self->elements,
     });
 }

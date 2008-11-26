@@ -1,6 +1,6 @@
 ---
 name: Chart-OFC2
-version: 0.02
+version: 0.03_01
 author:
   - 'Jozef Kutej <jkutej@cpan.org>'
 abstract: Generate html and data files for use with Open Flash Chart version 2
@@ -21,7 +21,7 @@ build_requires:
 provides:
   Chart::OFC2:
     file: lib/Chart/OFC2.pm
-    version: 0.02
+    version: 0.03_01
   Chart::OFC2::Axis:
     file: lib/Chart/OFC2/Axis.pm
     version: 0.01
@@ -55,6 +55,12 @@ provides:
   Chart::OFC2::Extremes:
     file: lib/Chart/OFC2/Extremes.pm
     version: 0.01
+  Chart::OFC2::HBar:
+    file: lib/Chart/OFC2/HBar.pm
+    version: 0.01
+  Chart::OFC2::HBarValues:
+    file: lib/Chart/OFC2/HBarValues.pm
+    version: 0.01
   Chart::OFC2::Labels:
     file: lib/Chart/OFC2/Labels.pm
     version: 0.01
@@ -62,10 +68,17 @@ provides:
     file: lib/Chart/OFC2/Line.pm
   Chart::OFC2::Pie:
     file: lib/Chart/OFC2/Pie.pm
+    version: 0.01
+  Chart::OFC2::PieValues:
+    file: lib/Chart/OFC2/PieValues.pm
+    version: 0.01
   Chart::OFC2::Scatter:
     file: lib/Chart/OFC2/Scatter.pm
   Chart::OFC2::Title:
     file: lib/Chart/OFC2/Title.pm
+    version: 0.01
+  Chart::OFC2::ToolTip:
+    file: lib/Chart/OFC2/ToolTip.pm
     version: 0.01
   Chart::OFC2::XAxis:
     file: lib/Chart/OFC2/Axis.pm
