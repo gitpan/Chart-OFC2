@@ -23,6 +23,7 @@ Chart::OFC2::Extremes - OFC2 axis or chart extremes
 
 use Moose;
 use Moose::Util::TypeConstraints;
+use MooseX::StrictConstructor;
 use Carp::Clan 'croak';
 
 our $VERSION = '0.01';
@@ -30,6 +31,10 @@ our $VERSION = '0.01';
 subtype 'Chart-OFC2-Extremes'
     => as 'Object'
     => where { $_[0]->isa('Chart::OFC2::Extremes') };
+
+coerce 'Chart-OFC2-Extremes'
+    => from 'HashRef'
+    => via { Chart::OFC2::Extremes->new($_) };
 
 =head1 PROPERTIES
 
@@ -91,8 +96,10 @@ sub reset {
             if ((not defined $min) or ($value < $min));
     }
     
-    $self->$axis_min($min);
-    $self->$axis_max($max);
+    $self->$axis_min($min)
+        if defined $min;
+    $self->$axis_max($max)
+        if defined $max;
 }
 
 

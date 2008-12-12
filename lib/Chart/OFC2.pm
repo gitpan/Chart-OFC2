@@ -41,7 +41,7 @@ Chart 2 is offering. But it should help you to starting creating OFC2
 graphs quite fast. The JSON format is quite intuitive and can be created
 from any hash. This module is more like guideline.
 
-This is early version so the API B<WILL> change, be careful when upgrading
+This is early version B<PROTOTYPE> so the API B<WILL> change, be careful when upgrading
 versions.
 
 =head1 DESCRIPTION
@@ -58,8 +58,9 @@ F<t/output/pie-data.json>, F<t/output/hbar-data.json> are the data files.
 
 use Moose;
 use Moose::Util::TypeConstraints;
+use MooseX::StrictConstructor;
 
-our $VERSION = '0.03_01';
+our $VERSION = '0.03_02';
 
 use Carp::Clan 'croak';
 use JSON::XS qw();
@@ -141,6 +142,8 @@ sub add_element {
     if ($element->use_extremes) {
         $self->y_axis->max('a');
         $self->y_axis->min('a');
+        $self->x_axis->max('a');
+        $self->x_axis->min('a');
     }
     
     push(@{ $self->elements }, $element);
@@ -332,12 +335,11 @@ file in html every time you generate new data. Like C<"data.json?".time()>.
 
 =head1 SEE ALSO
 
-L<Chart::OFC>, L<http://teethgrinder.co.uk/open-flash-chart-2/>
+L<Chart::OFC>, L<http://teethgrinder.co.uk/open-flash-chart-2/>, L<http://svn.cle.sk/repos/pub/cpan/Chart-OFC2/trunk/>
 
 =head1 COPYRIGHT AND LICENSE
 
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
+GNU GPL
 
 =head1 AUTHOR
 

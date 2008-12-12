@@ -37,8 +37,8 @@ WARNING
     graphs quite fast. The JSON format is quite intuitive and can be created
     from any hash. This module is more like guideline.
 
-    This is early version so the API WILL change, be careful when upgrading
-    versions.
+    This is early version PROTOTYPE so the API WILL change, be careful when
+    upgrading versions.
 
 DESCRIPTION
     OFC2 is a flash script for creating graphs. To have a graph we need an
@@ -96,11 +96,11 @@ NOTE
     ""data.json?".time()".
 
 SEE ALSO
-    Chart::OFC, <http://teethgrinder.co.uk/open-flash-chart-2/>
+    Chart::OFC, <http://teethgrinder.co.uk/open-flash-chart-2/>,
+    <http://svn.cle.sk/repos/pub/cpan/Chart-OFC2/trunk/>
 
 COPYRIGHT AND LICENSE
-    This library is free software; you can redistribute it and/or modify it
-    under the same terms as Perl itself.
+    GNU GPL
 
 AUTHOR
     Jozef Kutej
