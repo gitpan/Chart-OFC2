@@ -18,14 +18,24 @@ use Moose::Util::TypeConstraints;
 use MooseX::StrictConstructor;
 
 use Chart::OFC2::Extremes;
+use Scalar::Util 'looks_like_number', 'reftype';
 
-our $VERSION = '0.04';
+our $VERSION = '0.05';
+
+use 5.010;
 
 =head1 PROPERTIES
 
-    has 'type_name'    => (is => 'rw', isa => enum([qw(bar bar_filled pie hbar line line_dot line_hollow area_hollow scatter)]), required => 1);
+    has 'type_name'    => (is => 'rw', isa => enum([qw(
+        bar bar_3d bar_filled bar_glass
+        pie
+        hbar
+        line line_dot line_hollow
+        area_hollow
+        scatter
+    )]), required => 1);
     has 'values'       => (is => 'rw', isa => 'ArrayRef', trigger => sub { $_[0]->extremes->reset('y' => $_[1]); } );
-    has 'extremes'     => (is => 'rw', isa => 'Chart.OFC2.Extremes',  default => sub { Chart::OFC2::Extremes->new() }, lazy => 1, coerce  => 1);
+    has 'extremes'     => (is => 'rw', isa => 'Chart::OFC2::Extremes',  default => sub { Chart::OFC2::Extremes->new() }, lazy => 1, coerce  => 1);
     has 'use_extremes' => (is => 'rw', isa => 'Bool',  default => 0 );
     has 'on-click'     => (is => 'rw', isa => 'Str', );
     has 'tip'          => (is => 'rw', isa => 'Str',);
@@ -34,9 +44,16 @@ our $VERSION = '0.04';
 
 =cut
 
-has 'type_name'    => (is => 'rw', isa => enum([qw(bar bar_filled pie hbar line line_dot line_hollow area_hollow scatter)]), required => 1);
+has 'type_name'    => (is => 'rw', isa => enum([qw(
+    bar bar_3d bar_fade bar_filled bar_glass bar_sketch bar_filled bar_stack
+    pie
+    hbar
+    line line_dot line_hollow
+    area_hollow
+    scatter
+)]), required => 1);
 has 'values'       => (is => 'rw', isa => 'ArrayRef', trigger => sub { $_[0]->extremes->reset('y' => $_[1]); } );
-has 'extremes'     => (is => 'rw', isa => 'Chart.OFC2.Extremes',  default => sub { Chart::OFC2::Extremes->new() }, lazy => 1, coerce  => 1);
+has 'extremes'     => (is => 'rw', isa => 'Chart::OFC2::Extremes',  default => sub { Chart::OFC2::Extremes->new() }, lazy => 1, coerce  => 1);
 has 'use_extremes' => (is => 'rw', isa => 'Bool',);
 has 'on-click'     => (is => 'rw', isa => 'Str', );
 has 'tip'          => (is => 'rw', isa => 'Str',);
@@ -68,8 +85,40 @@ sub TO_JSON {
         $self->meta->get_all_attributes
     );
     $hash{'type'} = $self->type_name;
-    
+
+    _make_numbers_numbers(\$hash{'values'});
+
     return \%hash;
+}
+
+# finds "looks like numbers" in a structure and makes them really numbers
+sub _make_numbers_numbers {
+    my $var = shift;
+    
+    given (reftype($var)) {
+        when ('REF') {
+            _make_numbers_numbers(${$var})
+        }
+        when ('HASH') {
+            foreach my $key (keys %{$var}) {
+                _make_numbers_numbers(\${$var}{$key})
+            }
+        }
+        when ('ARRAY') {
+            my $i = 0;
+            while ($i < @{$var}) {
+                _make_numbers_numbers(\${$var}[$i]);
+                $i++;
+            }
+        }
+        when ('SCALAR') {
+            $$var = $$var+0
+                if looks_like_number($$var);
+        }
+        default {
+            die "unknown reference type - ".$var;
+        }
+    }
 }
 
 1;

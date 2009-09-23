@@ -38,7 +38,7 @@ in the middle of the bar.
 use Moose;
 use MooseX::StrictConstructor;
 
-our $VERSION = '0.01';
+our $VERSION = '0.05';
 
 extends 'Chart::OFC2::BarLineBase';
 
@@ -51,6 +51,6 @@ use Chart::OFC2::HBarValues;
 =cut
 
 has '+type_name' => (default => 'hbar');
-has 'values'     => (is => 'rw', isa => 'Chart.OFC2.HBarValues', 'coerce' => 1,);
+has 'values'     => (is => 'rw', isa => 'Chart::OFC2::HBarValues', 'coerce' => 1,);
 
 1;

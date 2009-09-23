@@ -29,12 +29,9 @@ use Moose;
 use Moose::Util::TypeConstraints;
 use MooseX::StrictConstructor;
 
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
-subtype 'Chart.OFC2.ToolTip'
-    => as 'Object'
-    => where { $_[0]->isa('Chart::OFC2::ToolTip') };
-coerce 'Chart.OFC2.ToolTip'
+coerce 'Chart::OFC2::ToolTip'
     => from 'HashRef'
     => via { Chart::OFC2::ToolTip->new($_) };
 

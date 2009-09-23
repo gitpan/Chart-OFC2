@@ -28,12 +28,9 @@ use Moose;
 use Moose::Util::TypeConstraints;
 use MooseX::StrictConstructor;
 
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
-subtype 'Chart.OFC2.Title'
-    => as 'Object'
-    => where { $_[0]->isa('Chart::OFC2::Title') };
-coerce 'Chart.OFC2.Title'
+coerce 'Chart::OFC2::Title'
     => from 'Str'
     => via { Chart::OFC2::Title->new('text' => $_) };
 

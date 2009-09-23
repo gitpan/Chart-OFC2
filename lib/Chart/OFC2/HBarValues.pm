@@ -17,13 +17,9 @@ use MooseX::StrictConstructor;
 use Carp::Clan 'croak';
 use List::MoreUtils 'any';
 
-our $VERSION = '0.01';
+our $VERSION = '0.05';
 
-subtype 'Chart.OFC2.HBarValues'
-    => as 'Object'
-    => where { $_[0]->isa('Chart::OFC2::HBarValues') };
-
-coerce 'Chart.OFC2.HBarValues'
+coerce 'Chart::OFC2::HBarValues'
     => from 'ArrayRef'
     => via { Chart::OFC2::HBarValues->_new_from_arrayref( $_) };
 

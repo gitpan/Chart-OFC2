@@ -6,8 +6,8 @@ SYNOPSIS
     OFC2 html:
 
         use Chart::OFC2;
-    
-        my $chart = Chart::OFC2->new(
+        
+    my $chart = Chart::OFC2->new(
             'title'  => 'Bar chart test',
         );
         print $chart->render_swf(600, 400, 'chart-data.json', 'test-chart');
@@ -17,15 +17,15 @@ SYNOPSIS
         use Chart::OFC2;
         use Chart::OFC2::Axis;
         use Chart::OFC2::Bar;
-    
-        my $chart = Chart::OFC2->new(
+        
+    my $chart = Chart::OFC2->new(
             'title'  => 'Bar chart test',
             'x_axis' => {
                 'labels' => [ 'Jan', 'Feb', 'Mar', 'Apr', 'May' ],
             },
         );
-    
-        my $bar = Chart::OFC2::Bar->new();
+        
+    my $bar = Chart::OFC2::Bar->new();
         $bar->values([ 1..5 ]);
         $chart->add_element($bar);
 
@@ -51,67 +51,88 @@ DESCRIPTION
 PROPERTIES
         has 'data_load_type' => (is => 'rw', isa => 'Str',  default => 'inline_js');
         has 'bootstrap'      => (is => 'rw', isa => 'Bool', default => '1');
-        has 'title'          => (is => 'rw', isa => 'Chart.OFC2.Title', default => sub { Chart::OFC2::Title->new() }, lazy => 1, coerce  => 1);
-        has 'x_axis'         => (is => 'rw', isa => 'Chart.OFC2.XAxis', default => sub { Chart::OFC2::XAxis->new() }, lazy => 1,);
-        has 'y_axis'         => (is => 'rw', isa => 'Chart.OFC2.YAxis', default => sub { Chart::OFC2::YAxis->new() }, lazy => 1, );
+        has 'title'          => (is => 'rw', isa => 'Chart::OFC2::Title', default => sub { Chart::OFC2::Title->new() }, lazy => 1, coerce  => 1);
+        has 'x_axis'         => (is => 'rw', isa => 'Chart::OFC2::XAxis', default => sub { Chart::OFC2::XAxis->new() }, lazy => 1,);
+        has 'y_axis'         => (is => 'rw', isa => 'Chart::OFC2::YAxis', default => sub { Chart::OFC2::YAxis->new() }, lazy => 1, );
         has 'elements'       => (is => 'rw', isa => 'ArrayRef', default => sub{[]}, lazy => 1);
-        has 'extremes'       => (is => 'rw', isa => 'Chart.OFC2.Extremes',  default => sub { Chart::OFC2::Extremes->new() }, lazy => 1);
-        has 'tooltip'        => (is => 'rw', isa => 'Chart.OFC2.ToolTip',);
+        has 'extremes'       => (is => 'rw', isa => 'Chart::OFC2::Extremes',  default => sub { Chart::OFC2::Extremes->new() }, lazy => 1);
+        has 'tooltip'        => (is => 'rw', isa => 'Chart::OFC2::ToolTip',);
 
 METHODS
   new()
-
     Object constructor.
 
   get_element($type)
-
-    Returns new chart object of selected type. Currently only `bar' and
-    `pie' is available.
+    Returns new chart object of selected type. Currently only "bar" and
+    "pie" is available.
 
   add_element($element)
-
     Adds passed element to the graph.
 
   render_chart_data
-
     Returns stringified JSON encoded graph data.
 
   auto_extremes
-
     Recalculate graph auto extremes.
 
   render_swf($width, $height, $data_url, $div_id)
-
     Returns html snippet that will represent one graph in a html document.
 
-    WARN: the arguments format will change to `key =' value> in the next
+    WARN: the arguments format will change to "key =" value> in the next
     releases.
 
 FUNCTIONS
   smoother_number
-
     round the number up a bit to a nice round number also changes number to
     an int
 
   smooth($axis_name, $axis_type)
-
     Smooth axis min/max.
 
 NOTE
     Refresh button will not cause the data file of the graph to be reloaded
     so either use proper expiration settings for it or change the name of
     the file in html every time you generate new data. Like
-    `"data.json?".time()'.
+    ""data.json?".time()".
 
 SEE ALSO
-    Chart::OFC, http://teethgrinder.co.uk/open-flash-chart-2/,
-    http://svn.cle.sk/repos/pub/cpan/Chart-OFC2/trunk/
+    Chart::OFC, <http://teethgrinder.co.uk/open-flash-chart-2/>,
+    <http://svn.cle.sk/repos/pub/cpan/Chart-OFC2/trunk/>
+
+SUPPORT
+    *   Mailinglist
+
+        <http://lists.meon.sk/mailman/listinfo/chart-ofc2>
+
+    *   GitHub: issues
+
+        <http://github.com/jozef/chart-ofc2/issues>
+
+    *   RT: CPAN's request tracker
+
+        <http://rt.cpan.org/NoAuth/Bugs.html?Dist=Chart-OFC2>
+
+    *   AnnoCPAN: Annotated CPAN documentation
+
+        <http://annocpan.org/dist/Chart-OFC2>
+
+    *   CPAN Ratings
+
+        <http://cpanratings.perl.org/d/Chart-OFC2>
+
+    *   Search CPAN
+
+        <http://search.cpan.org/dist/Chart-OFC2>
+
+ACKNOWLEDGEMENTS
+    Thanks to John Goulah "<jgoulah@cpan.org>" for his patches and
+    suggestions (#49416, #48821, #48376, #48380).
 
 COPYRIGHT AND LICENSE
     GNU GPL
 
 AUTHOR
-    Jozef Kutej
+    Jozef Kutej "<jkutej@cpan.org>"
 
     I've used some of the code from the perl-ofc-library/open_flash_chart.pm
     that is shipped together with all the rest OFC2 files.

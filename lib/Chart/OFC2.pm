@@ -60,7 +60,7 @@ use Moose;
 use Moose::Util::TypeConstraints;
 use MooseX::StrictConstructor;
 
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
 use Carp::Clan 'croak';
 use JSON::XS qw();
@@ -77,12 +77,12 @@ use List::MoreUtils 'any';
 
     has 'data_load_type' => (is => 'rw', isa => 'Str',  default => 'inline_js');
     has 'bootstrap'      => (is => 'rw', isa => 'Bool', default => '1');
-    has 'title'          => (is => 'rw', isa => 'Chart.OFC2.Title', default => sub { Chart::OFC2::Title->new() }, lazy => 1, coerce  => 1);
-    has 'x_axis'         => (is => 'rw', isa => 'Chart.OFC2.XAxis', default => sub { Chart::OFC2::XAxis->new() }, lazy => 1,);
-    has 'y_axis'         => (is => 'rw', isa => 'Chart.OFC2.YAxis', default => sub { Chart::OFC2::YAxis->new() }, lazy => 1, );
+    has 'title'          => (is => 'rw', isa => 'Chart::OFC2::Title', default => sub { Chart::OFC2::Title->new() }, lazy => 1, coerce  => 1);
+    has 'x_axis'         => (is => 'rw', isa => 'Chart::OFC2::XAxis', default => sub { Chart::OFC2::XAxis->new() }, lazy => 1,);
+    has 'y_axis'         => (is => 'rw', isa => 'Chart::OFC2::YAxis', default => sub { Chart::OFC2::YAxis->new() }, lazy => 1, );
     has 'elements'       => (is => 'rw', isa => 'ArrayRef', default => sub{[]}, lazy => 1);
-    has 'extremes'       => (is => 'rw', isa => 'Chart.OFC2.Extremes',  default => sub { Chart::OFC2::Extremes->new() }, lazy => 1);
-    has 'tooltip'        => (is => 'rw', isa => 'Chart.OFC2.ToolTip',);
+    has 'extremes'       => (is => 'rw', isa => 'Chart::OFC2::Extremes',  default => sub { Chart::OFC2::Extremes->new() }, lazy => 1);
+    has 'tooltip'        => (is => 'rw', isa => 'Chart::OFC2::ToolTip',);
 
 =cut
 
@@ -92,13 +92,14 @@ subtype 'Chart.OFC2.NaturalInt'
 
 has 'data_load_type' => (is => 'rw', isa => 'Str',  default => 'inline_js');
 has 'bootstrap'      => (is => 'rw', isa => 'Bool', default => '1');
-has 'title'          => (is => 'rw', isa => 'Chart.OFC2.Title', default => sub { Chart::OFC2::Title->new() }, lazy => 1, coerce  => 1);
-has 'x_axis'         => (is => 'rw', isa => 'Chart.OFC2.XAxis', default => sub { Chart::OFC2::XAxis->new() }, lazy => 1, coerce  => 1);
-has 'y_axis'         => (is => 'rw', isa => 'Chart.OFC2.YAxis', default => sub { Chart::OFC2::YAxis->new() }, lazy => 1, coerce  => 1);
+has 'title'          => (is => 'rw', isa => 'Chart::OFC2::Title', default => sub { Chart::OFC2::Title->new() }, lazy => 1, coerce  => 1);
+has 'x_axis'         => (is => 'rw', isa => 'Chart::OFC2::XAxis', default => sub { Chart::OFC2::XAxis->new() }, lazy => 1, coerce  => 1);
+has 'y_axis'         => (is => 'rw', isa => 'Chart::OFC2::YAxis', default => sub { Chart::OFC2::YAxis->new() }, lazy => 1, coerce  => 1);
 has 'elements'       => (is => 'rw', isa => 'ArrayRef', default => sub{[]}, lazy => 1);
-has 'extremes'       => (is => 'rw', isa => 'Chart.OFC2.Extremes',  default => sub { Chart::OFC2::Extremes->new() }, lazy => 1);
+has 'extremes'       => (is => 'rw', isa => 'Chart::OFC2::Extremes',  default => sub { Chart::OFC2::Extremes->new() }, lazy => 1);
 has '_json'          => (is => 'rw', isa => 'Object',  default => sub { JSON::XS->new->pretty(1)->convert_blessed(1) }, lazy => 1);
-has 'tooltip'        => (is => 'rw', isa => 'Chart.OFC2.ToolTip', coerce  => 1);
+has 'tooltip'        => (is => 'rw', isa => 'Chart::OFC2::ToolTip', coerce  => 1);
+has 'bg_colour'      => (is => 'rw', isa => 'Str',  default => 'f8f8d8');
 
 
 =head1 METHODS
@@ -167,6 +168,7 @@ sub render_chart_data {
         'y_axis'   => $self->y_axis,
         'tooltip'  => $self->tooltip,
         'elements' => $self->elements,
+        'bg_colour' => $self->bg_colour,
     });
 }
 
@@ -337,13 +339,48 @@ file in html every time you generate new data. Like C<"data.json?".time()>.
 
 L<Chart::OFC>, L<http://teethgrinder.co.uk/open-flash-chart-2/>, L<http://svn.cle.sk/repos/pub/cpan/Chart-OFC2/trunk/>
 
+=head1 SUPPORT
+
+=over 4
+
+=item * Mailinglist
+
+L<http://lists.meon.sk/mailman/listinfo/chart-ofc2>
+
+=item * GitHub: issues
+
+L<http://github.com/jozef/chart-ofc2/issues>
+
+=item * RT: CPAN's request tracker
+
+L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Chart-OFC2>
+
+=item * AnnoCPAN: Annotated CPAN documentation
+
+L<http://annocpan.org/dist/Chart-OFC2>
+
+=item * CPAN Ratings
+
+L<http://cpanratings.perl.org/d/Chart-OFC2>
+
+=item * Search CPAN
+
+L<http://search.cpan.org/dist/Chart-OFC2>
+
+=back
+
+=head1 ACKNOWLEDGEMENTS
+
+Thanks to John Goulah C<< <jgoulah@cpan.org> >> for his patches
+and suggestions (#49416, #48821, #48376, #48380).
+
 =head1 COPYRIGHT AND LICENSE
 
 GNU GPL
 
 =head1 AUTHOR
 
-Jozef Kutej
+Jozef Kutej C<< <jkutej@cpan.org> >>
 
 I've used some of the code from the F<perl-ofc-library/open_flash_chart.pm>
 that is shipped together with all the rest OFC2 files.
