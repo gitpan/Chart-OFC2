@@ -9,15 +9,17 @@ Chart::OFC2::Labels - OFC2 labels object
     use Chart::OFC2::Labels;
     
     'x_axis' => Chart::OFC2::XAxis->new(
-        'labels' => [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun' ],
+        labels => { 
+            labels => [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun' ]
+        }
     ),
 
     'x_axis' => Chart::OFC2::XAxis->new(
-        'labels' => Chart::OFC2::Labels->new(
-            'labels' => [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun' ],
-            'colour' => '#555555',
-            'rotate' => 45,
-        ),
+        labels => {
+            labels => [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun' ],
+            colour => '#555555',
+            rotate => 45
+        }
     ),
 
 =head1 DESCRIPTION
@@ -27,23 +29,20 @@ Chart::OFC2::Labels - OFC2 labels object
 use Moose;
 use Moose::Util::TypeConstraints;
 use MooseX::StrictConstructor;
+use MooseX::Aliases;
 
-our $VERSION = '0.06';
-
-coerce 'Chart::OFC2::Labels'
-    => from 'ArrayRef'
-    => via { Chart::OFC2::Labels->new('labels' => $_) };
+our $VERSION = '0.07_01';
 
 =head1 PROPERTIES
 
     has 'labels' => ( is => 'rw', isa => 'ArrayRef', );
-    has 'colour' => ( is => 'rw', isa => 'Str',  );
+    has 'colour' => ( is => 'rw', isa => 'Str', alias => 'color' );
     has 'rotate' => ( is => 'rw', isa => 'Num', );
 
 =cut
 
 has 'labels' => ( is => 'rw', isa => 'ArrayRef', );
-has 'colour' => ( is => 'rw', isa => 'Str',  );
+has 'colour' => ( is => 'rw', isa => 'Str', alias => 'color' );
 has 'rotate' => ( is => 'rw', isa => 'Num', );
 
 
@@ -62,16 +61,23 @@ Returns HashRef that is possible to give to C<encode_json()> function.
 sub TO_JSON {
     my ($self) = @_;
     
-    if (defined $self->colour or defined $self->rotate) {
-        return {
-            map  { my $v = $self->$_; (defined $v ? ($_ => $v) : ()) }
-            map  { $_->name } $self->meta->get_all_attributes
-        };
-    }
-    else {
-        return [ @{$self->labels} ];
-    }
+    return {
+        map  { my $v = $self->$_; (defined $v ? ($_ => $v) : ()) }
+        map  { $_->name } $self->meta->get_all_attributes
+    };
 }
+
+=head2 color()
+
+Same as colour().
+
+=cut
+
+sub color {
+    &colour;
+}
+
+__PACKAGE__->meta->make_immutable;
 
 1;
 

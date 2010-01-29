@@ -17,7 +17,7 @@ use MooseX::StrictConstructor;
 use Carp::Clan 'croak';
 use List::MoreUtils 'any';
 
-our $VERSION = '0.06';
+our $VERSION = '0.07_01';
 
 coerce 'Chart::OFC2::PieValues'
     => from 'ArrayRef'
@@ -97,6 +97,8 @@ sub TO_JSON {
     
     return \@values_with_labels;
 }
+
+__PACKAGE__->meta->make_immutable;
 
 1;
 

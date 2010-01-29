@@ -34,16 +34,16 @@ Chart::OFC2::Pie - OFC2 Pie chart
 
 =head1 DESCRIPTION
 
-    use base 'Chart::OFC2::Element';
+    extends 'Chart::OFC2::Element';
 
 =cut
 
 use Moose;
 use MooseX::StrictConstructor;
 
-our $VERSION = '0.06';
+our $VERSION = '0.07_01';
 
-use base 'Chart::OFC2::Element';
+extends 'Chart::OFC2::Element';
 
 use Chart::OFC2::PieValues;
 

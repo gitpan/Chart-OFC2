@@ -20,8 +20,10 @@ SYNOPSIS
     
         my $chart = Chart::OFC2->new(
             'title'  => 'Bar chart test',
-            'x_axis' => {
-                'labels' => [ 'Jan', 'Feb', 'Mar', 'Apr', 'May' ],
+            x_axis => {
+                labels => {
+                    labels => [ 'Jan', 'Feb', 'Mar', 'Apr', 'May' ],
+                }
             },
         );
     
@@ -57,6 +59,7 @@ PROPERTIES
         has 'elements'       => (is => 'rw', isa => 'ArrayRef', default => sub{[]}, lazy => 1);
         has 'extremes'       => (is => 'rw', isa => 'Chart::OFC2::Extremes',  default => sub { Chart::OFC2::Extremes->new() }, lazy => 1);
         has 'tooltip'        => (is => 'rw', isa => 'Chart::OFC2::ToolTip',);
+        has 'bg_colour'      => (is => 'rw', isa => 'Str',  default => 'f8f8d8', alias => 'bg_color' );
 
 METHODS
   new()
@@ -89,6 +92,9 @@ FUNCTIONS
   smooth($axis_name, $axis_type)
     Smooth axis min/max.
 
+  bg_color()
+    Same as bg_colour().
+
 NOTE
     Refresh button will not cause the data file of the graph to be reloaded
     so either use proper expiration settings for it or change the name of
@@ -97,7 +103,7 @@ NOTE
 
 SEE ALSO
     Chart::OFC, http://teethgrinder.co.uk/open-flash-chart-2/,
-    http://svn.cle.sk/repos/pub/cpan/Chart-OFC2/trunk/
+    http://github.com/jozef/chart-ofc2/
 
 AUTHOR
     Jozef Kutej `<jkutej@cpan.org>'
@@ -115,6 +121,7 @@ CONTRIBUTORS
         John Goulah C<< <jgoulah@cpan.org> >>
         Noë Snaterse
         Adam J. Foxson C<< <atom@cpan.org> >>
+        Jeff Tam
 
 SUPPORT
     * Mailinglist

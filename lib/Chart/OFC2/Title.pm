@@ -28,7 +28,7 @@ use Moose;
 use Moose::Util::TypeConstraints;
 use MooseX::StrictConstructor;
 
-our $VERSION = '0.06';
+our $VERSION = '0.07_01';
 
 coerce 'Chart::OFC2::Title'
     => from 'Str'
@@ -66,6 +66,8 @@ sub TO_JSON {
         $self->meta->get_all_attributes
     };
 }
+
+__PACKAGE__->meta->make_immutable;
 
 1;
 
