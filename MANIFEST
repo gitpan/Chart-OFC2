@@ -1,5 +1,11 @@
 Build.PL
 Changes
+examples/for-pod/bar-data.json
+examples/for-pod/bar.html
+examples/for-pod/expressInstall.swf
+examples/for-pod/open-flash-chart.swf
+examples/for-pod/swfobject.js
+examples/screenshots/bar-chart-test.png
 lib/Chart/OFC2.pm
 lib/Chart/OFC2/Axis.pm
 lib/Chart/OFC2/Bar.pm
@@ -44,4 +50,3 @@ t/pod-coverage.t
 t/pod-spell.t
 t/pod.t
 t/signature.t
-SIGNATURE    Added here by Module::Build
