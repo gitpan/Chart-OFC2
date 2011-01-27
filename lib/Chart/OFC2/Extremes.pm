@@ -26,7 +26,7 @@ use Moose::Util::TypeConstraints;
 use MooseX::StrictConstructor;
 use Carp::Clan 'croak';
 
-our $VERSION = '0.08_01';
+our $VERSION = '0.08_02';
 
 coerce 'Chart::OFC2::Extremes'
     => from 'HashRef'
@@ -46,8 +46,9 @@ has 'x_axis_max' => (is => 'rw', isa => 'Num|Undef', );
 has 'x_axis_min' => (is => 'rw', isa => 'Num|Undef', );
 has 'y_axis_max' => (is => 'rw', isa => 'Num|Undef', );
 has 'y_axis_min' => (is => 'rw', isa => 'Num|Undef', );
+has 'y_axis_right_max' => (is => 'rw', isa => 'Num|Undef', );
+has 'y_axis_right_min' => (is => 'rw', isa => 'Num|Undef', );
 has 'other'      => (is => 'rw', isa => 'Num|Undef', );
-
 
 =head1 METHODS
 
@@ -65,33 +66,42 @@ sub reset {
     my $self      = shift;
     my $axis_type = shift;
     my $values    = shift;
-    
-    croak 'pass axis type (x|y) argument'
-        if (($axis_type ne 'y') and ($axis_type ne 'x'));
+
+    croak 'pass axis type (x|y|y_right) argument'
+        if (($axis_type ne 'y') and ($axis_type ne 'y_right') and ($axis_type ne 'x'));
     croak 'pass values argument as array ref'
         if (ref $values ne 'ARRAY');
 
     my $axis_min = $axis_type.'_axis_min';
     my $axis_max = $axis_type.'_axis_max';
     
+    if ($axis_type eq 'y_right') {
+        $axis_min = 'y_axis_right_min';
+        $axis_max = 'y_axis_right_max';
+    }
+
     my $max;
     my $min;
     my @values_to_check = @{$values};
     while (scalar @values_to_check) {
         my $value = shift @values_to_check;
-        
+
         next if not defined $value;
         push @values_to_check, @{$value}
             if ref $value eq 'ARRAY';
-        
+
+        # To deal with e.g. Candle chart data
+        push @values_to_check, values( %{$value} )
+          if ref $value eq 'HASH';
+
         next if ref $value ne '';
-        
+
         $max = $value
             if ((not defined $max) or ($value > $max));
         $min = $value
             if ((not defined $min) or ($value < $min));
     }
-    
+
     $self->$axis_min($min)
         if defined $min;
     $self->$axis_max($max)
@@ -113,8 +123,11 @@ sub TO_JSON {
         'x_axis_min' => $self->x_axis_min, 
         'y_axis_max' => $self->y_axis_max,
         'y_axis_min' => $self->y_axis_min,
+        (defined $self->y_axis_right_max ? ('y_axis_right_max' => $self->y_axis_right_max) : ()),
+        (defined $self->y_axis_right_min ? ('y_axis_right_min' => $self->y_axis_right_min) : ()),
         'other'      => $self->other,
     };
+
 }
 
 1;

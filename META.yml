@@ -21,76 +21,85 @@ name: Chart-OFC2
 provides:
   Chart::OFC2:
     file: lib/Chart/OFC2.pm
-    version: 0.08_01
+    version: 0.08_02
   Chart::OFC2::Area::Hollow:
     file: lib/Chart/OFC2/Line.pm
-    version: 0.08_01
+    version: 0.08_02
   Chart::OFC2::Axis:
     file: lib/Chart/OFC2/Axis.pm
-    version: 0.08_01
+    version: 0.08_02
   Chart::OFC2::Bar:
     file: lib/Chart/OFC2/Bar.pm
-    version: 0.08_01
+    version: 0.08_02
   Chart::OFC2::Bar::3D:
     file: lib/Chart/OFC2/Bar.pm
-    version: 0.08_01
+    version: 0.08_02
   Chart::OFC2::Bar::Fade:
     file: lib/Chart/OFC2/Bar.pm
-    version: 0.08_01
+    version: 0.08_02
   Chart::OFC2::Bar::Filled:
     file: lib/Chart/OFC2/Bar.pm
-    version: 0.08_01
+    version: 0.08_02
   Chart::OFC2::Bar::Glass:
     file: lib/Chart/OFC2/Bar.pm
-    version: 0.08_01
+    version: 0.08_02
   Chart::OFC2::Bar::Sketch:
     file: lib/Chart/OFC2/Bar.pm
-    version: 0.08_01
+    version: 0.08_02
   Chart::OFC2::Bar::Stack:
     file: lib/Chart/OFC2/Bar.pm
-    version: 0.08_01
+    version: 0.08_02
   Chart::OFC2::BarLineBase:
     file: lib/Chart/OFC2/BarLineBase.pm
-    version: 0.08_01
+    version: 0.08_02
+  Chart::OFC2::Candle:
+    file: lib/Chart/OFC2/Candle.pm
+    version: 0.08_02
   Chart::OFC2::Element:
     file: lib/Chart/OFC2/Element.pm
-    version: 0.08_01
+    version: 0.08_02
   Chart::OFC2::Extremes:
     file: lib/Chart/OFC2/Extremes.pm
-    version: 0.08_01
+    version: 0.08_02
   Chart::OFC2::HBar:
     file: lib/Chart/OFC2/HBar.pm
-    version: 0.08_01
+    version: 0.08_02
   Chart::OFC2::HBarValues:
     file: lib/Chart/OFC2/HBarValues.pm
-    version: 0.08_01
+    version: 0.08_02
   Chart::OFC2::Labels:
     file: lib/Chart/OFC2/Labels.pm
-    version: 0.08_01
+    version: 0.08_02
+  Chart::OFC2::Legend:
+    file: lib/Chart/OFC2/Legend.pm
+    version: 0.08_02
   Chart::OFC2::Line:
     file: lib/Chart/OFC2/Line.pm
-    version: 0.08_01
+    version: 0.08_02
   Chart::OFC2::Line::Dot:
     file: lib/Chart/OFC2/Line.pm
-    version: 0.08_01
+    version: 0.08_02
   Chart::OFC2::Line::Hollow:
     file: lib/Chart/OFC2/Line.pm
-    version: 0.08_01
+    version: 0.08_02
+  Chart::OFC2::Menu:
+    file: lib/Chart/OFC2/Menu.pm
+    version: 0.08_02
   Chart::OFC2::Pie:
     file: lib/Chart/OFC2/Pie.pm
-    version: 0.08_01
+    version: 0.08_02
   Chart::OFC2::PieValues:
     file: lib/Chart/OFC2/PieValues.pm
-    version: 0.08_01
+    version: 0.08_02
   Chart::OFC2::Scatter:
     file: lib/Chart/OFC2/Scatter.pm
-    version: 0.08_01
+    version: 0.08_02
   Chart::OFC2::Title:
     file: lib/Chart/OFC2/Title.pm
-    version: 0.08_01
+    version: 0.08_02
   Chart::OFC2::ToolTip:
     file: lib/Chart/OFC2/ToolTip.pm
-    version: 0.08_01
+    version: 0.08_02
   Chart::OFC2::Types:
     file: lib/Chart/OFC2/Types.pm
   Chart::OFC2::XAxis:
@@ -115,4 +124,4 @@ resources:
   bugtracker: http://rt.cpan.org/NoAuth/Bugs.html?Dist=Chart-OFC2
   license: http://dev.perl.org/licenses/
   repository: http://github.com/jozef/chart-ofc2/
-version: 0.08_01
+version: 0.08_02

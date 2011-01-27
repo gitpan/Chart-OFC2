@@ -8,7 +8,7 @@ use Test::More tests => 3;
 use Test::Differences;
 
 use FindBin qw($Bin);
-use lib "$Bin/lib";
+use lib "$Bin/../lib";
 
 BEGIN {
     use_ok ( 'Chart::OFC2::Element' ) or exit;
@@ -38,6 +38,8 @@ sub main {
             'x_axis_min' => undef, 
             'y_axis_max' => 5,
             'y_axis_min' => 1,
+            'y_axis_right_max' => 5,
+            'y_axis_right_min' => 1,
             'other'      => undef,
         },
         'extremes set'

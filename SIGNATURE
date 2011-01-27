@@ -1,0 +1,82 @@
+This file contains message digests of all files listed in MANIFEST,
+signed via the Module::Signature module, version 0.63.
+
+To verify the content in this distribution, first make sure you have
+Module::Signature installed, then type:
+
+    % cpansign -v
+
+It will check each file's integrity, as well as the signature's
+validity.  If "==> Signature verified OK! <==" is not displayed,
+the distribution may already have been compromised, and you should
+not run its Makefile.PL or Build.PL.
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+SHA1 f5b675b61bebbb7279a9fd84d8b720cd05e808fb Build.PL
+SHA1 579170a066041a706758b4b5be3d3e96c4eb912f Changes
+SHA1 a72866ad08fcf8855b8101b49d6ba1485b771468 MANIFEST
+SHA1 cb15fd8e8f944204af1e3b7bc867a29fabab3999 META.yml
+SHA1 c4779d339f0a55aad56e6433faaae30a8e555e74 Makefile.PL
+SHA1 e2e8c0e61b9de3c5da5389246ad053755c234aa4 README
+SHA1 a6032623f7bf875a77ba11ef4d6795ec2083d5c3 examples/for-pod/bar-data.json
+SHA1 69bbcc2321c40f75271a62e3357f4214223b4f77 examples/for-pod/bar.html
+SHA1 0b5d04da8a8d1e9a7361b44b1e38402347ef1824 examples/for-pod/expressInstall.swf
+SHA1 913df5bf76d33f565c934c6f8eb998936539dfd5 examples/for-pod/open-flash-chart.swf
+SHA1 d23c1324ef82ff735291f6bcf0e4421ecffe320b examples/for-pod/pie-data.json
+SHA1 0ff1f9621a1342ef2bcd2992176ff3adbe5721d1 examples/for-pod/pie.html
+SHA1 66851ab2133e27b97c4f3048416b947aa7ed82c5 examples/for-pod/swfobject.js
+SHA1 7cd0362ddee70480c2d914f73aa34339ea014ff2 examples/screenshots/bar-chart.png
+SHA1 7667bb4d2b49e85b94d22db301bad0510e1784e9 examples/screenshots/pie-chart.png
+SHA1 8bb1fae16a5d6a6e962ff48e472cdb8e8ded6f2c lib/Chart/OFC2.pm
+SHA1 66135d755e872673c9d5942b1cd7471c9aec0047 lib/Chart/OFC2/Axis.pm
+SHA1 f33c4b2e6f875878281d2b0b18c8d1f2a5550bca lib/Chart/OFC2/Bar.pm
+SHA1 bdbb5b9b8db1a811da99a0d857c8e42af51374db lib/Chart/OFC2/BarLineBase.pm
+SHA1 bdc849bf8280412df34efd83537f19b8d302be47 lib/Chart/OFC2/Candle.pm
+SHA1 f444a32c9a75ecb972fc0bb14ad336f24629708c lib/Chart/OFC2/Element.pm
+SHA1 c1c4d9cb813fa63f695defe575b22b6846a2bc0f lib/Chart/OFC2/Extremes.pm
+SHA1 1af059e3ae69b82e837d9a855d199c2cd9cb3878 lib/Chart/OFC2/HBar.pm
+SHA1 ae6c8365520c17de69fe3e276cf1ef4ba9913f26 lib/Chart/OFC2/HBarValues.pm
+SHA1 a23ccd24ec7ef83a9fdec4078635c501d46372f1 lib/Chart/OFC2/Labels.pm
+SHA1 3e701f0e52aba368056a66f80088829f791dc55c lib/Chart/OFC2/Legend.pm
+SHA1 96c0d826b225c9dcb1abc04237ac875a8a866717 lib/Chart/OFC2/Line.pm
+SHA1 dd5bdd2efa90cc34ef03d62dc4ca4242e8863f17 lib/Chart/OFC2/Menu.pm
+SHA1 f792afb0ba3a329f8cab7ed2a9c1b800ab05b18c lib/Chart/OFC2/Pie.pm
+SHA1 e1cfe912dae6f22e59cf51b15d3bbd6b1eb7cc50 lib/Chart/OFC2/PieValues.pm
+SHA1 7da5cec344419a04d6a28b8dae48d8d77a6224e2 lib/Chart/OFC2/Scatter.pm
+SHA1 8bad5dbfc9d478b18c9fe372b7074a65cf9031af lib/Chart/OFC2/Title.pm
+SHA1 2fc0dd3e3891a6884112781fe2b4f58baaa582da lib/Chart/OFC2/ToolTip.pm
+SHA1 5c8662b087c8afb0138c802023e97cc96c30add8 lib/Chart/OFC2/Types.pm
+SHA1 605f05a5336cc37a476bb10b218f5ad1a2bd340d t/00_compile.t
+SHA1 fc0445f8784f3e896473a373b13ef72e4c72e02d t/01_chart.t
+SHA1 568006bedc8614137d9885226249b71a8321256f t/02_bar.t
+SHA1 5871f363cfc53e9e71173600b3d4bfe05d3296ee t/03_pie.t
+SHA1 728be18bb0feb69a2efecdcf731feb894b8360b5 t/04_axis.t
+SHA1 35caa2c3632e8c1bfd797c83bb2b4a60e9a52804 t/05_extremes.t
+SHA1 05885af05621e46a194c95187e409f00b1541178 t/06_element.t
+SHA1 9f69cedb790b8ba2133d524a2f85d38bb5b849a5 t/07_hbar.t
+SHA1 7e8ca8c511466dab7f8873552bf22cc552ef172b t/08_line.t
+SHA1 f3f7afc17096d201dfbe98747990f59794a96d36 t/09_scatter.t
+SHA1 b0f37287872aef4075ce9bf607c747a66e9f79c0 t/10_types.t
+SHA1 6938660f2e8dba01c7df3bfc1ce60cad731dd3b1 t/11_candle.t
+SHA1 41533fbd463e42d2ecf1e119eca910c16809d13e t/distribution.t
+SHA1 7bdb1e034041cbf3313dc597518e44660d3c2392 t/output/_footer.html
+SHA1 e0855927a1ab51b785a4de405df0b67a4c8f4766 t/output/_header.html
+SHA1 0b5d04da8a8d1e9a7361b44b1e38402347ef1824 t/output/expressInstall.swf
+SHA1 913df5bf76d33f565c934c6f8eb998936539dfd5 t/output/open-flash-chart.swf
+SHA1 66851ab2133e27b97c4f3048416b947aa7ed82c5 t/output/swfobject.js
+SHA1 a2e21cf1e971f44e9c285b9a44e0c2e1e448e2a7 t/perlcritic.t
+SHA1 5c1ccfc0f00f07be726af763c46497ddcbbdff30 t/perlcriticrc
+SHA1 5aa1ab0c95f16a7e29e92898ee97e9dccf15a9b7 t/perltidy.conf
+SHA1 4d543071b9c33ab70cd3c6bc1ba0d944b375f621 t/pod-coverage.t
+SHA1 f74583404b625a75b6b816242a13317ffbc95157 t/pod-spell.t
+SHA1 640935336dc1123c0069bcf5432bcaedc2cf22d3 t/pod.t
+SHA1 4aeb184c9bed26ab6c3be1ebdb8470c0cb353b1f t/signature.t
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.10 (GNU/Linux)
+
+iEYEARECAAYFAk1BevMACgkQC0OgUPgL2Sda8gCcCguvQ9dOziEhKa5yfXWTBkMq
+F38AniMJcpsXO5LYKc+x64gR99yKOyxN
+=GQuJ
+-----END PGP SIGNATURE-----
